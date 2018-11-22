@@ -1,0 +1,101 @@
+{% extends "core/base.html" %}
+
+{% block title %}Product{% endblock title %}
+
+{% load static %}
+
+{% block extra %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/styles/product.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'core/styles/product_responsive.css' %}">
+{% endblock extra %}
+
+{% block content %}
+	
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="{% static 'core/images/nueva_imagen2.jpeg' %}" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_container">
+						<div class="home_content">
+							<div class="home_title">Producto</div>
+							<div class="breadcrumbs">
+								<ul>
+									<li><a href="#">Inicio</a></li>
+									<li>Productos</li>
+									<li>Detalles</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Product -->
+
+	<div class="product">
+		<div class="container">
+
+			<div class="row product_row">
+
+				<!-- Product Image -->
+				<div class="col-lg-7">
+					<div class="product_image">
+						<div class="product_image_large"><img src="{{product.image.url}}" alt=""></div>
+						<div class="product_image_thumbnails d-flex flex-row align-items-start justify-content-start">
+							{% if product.image2 %}
+							<div class="product_image_thumbnail" style="background-image:url({{product.image2.url}})" data-image="{{product.image2.url}}"></div>
+							{% endif %}
+							{% if product.image3 %}
+							<div class="product_image_thumbnail" style="background-image:url({{product.image3.url}})" data-image="{{product.image3.url}}"></div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+
+				<!-- Product Content -->
+				<div class="col-lg-5">
+					<div class="product_content">
+						<form action="" method="post">
+							{% csrf_token %}
+							<div style="line-height: 1.10" class="product_name">{{product.name}}</div>
+							<div class="product_price">${{product.price}}0</div>
+
+							<div class="product_text">
+								<p>{{product.description}}</p>
+							</div>
+							<!-- Product Quantity -->
+							<div class="product_quantity_container">
+								<span>Cantidad</span>
+								<div class="product_quantity clearfix">
+									{{form.quantity}}
+									<div class="quantity_buttons">
+										<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
+										<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+									</div>
+								</div>
+							</div>
+							<!-- Product Size -->
+							<div class="product_size_container">
+								<input type="submit" class="review_form_button" value="agregar a carro">
+							</div>
+						</form>
+              			
+					</div>
+				</div>
+				
+			</div>
+
+			
+		</div>		
+	</div>
+
+{% endblock content %}
+
+{% block extrafoot %}
+<script src="{% static 'core/js/product_custom.js' %}"></script>
+{% endblock extrafoot %}

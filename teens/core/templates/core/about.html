@@ -1,0 +1,85 @@
+{% extends "core/base.html" %}
+
+{% block title %}About{% endblock title %}
+
+{% load static %}
+
+{% block extra %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'core/styles/product.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'core/styles/product_responsive.css' %}">
+{% endblock extra %}
+
+{% block content %}
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="{% static 'core/images/retro-wallpaper-1.jpg' %}" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_container">
+						<div class="home_content">
+							<div class="home_title">Historia</div>
+							<div class="breadcrumbs">
+								<ul>
+									<li><a href="{% url 'home' %}">Inicio</a></li>
+									<li>Historia</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+		<!-- Newsletter -->
+	
+		<div style="margin-top: 70px; margin-bottom: 70px;" class="newsletter">
+			<div class="newsletter_content">
+				<div class="newsletter_image" style="background-image:url({% static 'core/images/Black-background-texture.jpg' %})"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="section_title_container text-center">
+								<div class="section_subtitle">Chocolates teens</div>
+								<div class="section_title">¿quienes somos?</div>
+							</div>
+						</div>
+					</div>
+					<div class="row newsletter_container">
+						<div class="col-lg-10 offset-lg-1">
+							<div style="font-size: 20px;" class="newsletter_text">
+								Alberto Laposse sabía que sus vacaciones escolares se vivían entre la harina y el calor de un horno. Su padre Juan y su tío Enrique Lappose le enseñaban al joven los secretos de la panadería y la pastelería del legendario negocio familiar: El Globo. <br>
+								La historia de la familia Laposse al frente de El Globo duró más de 130 años.
+								<br> 
+								La familia Laposse llegó de Turín, Italia, por invitación de una familia italiana de apellido Tenconni. Ellos serían la familia que fundaría el concepto de El Globo en México, una pastelería francesa que fue fundada en 1884.
+								<br> 
+								El abuelo de Alberto llega de Europa, continente en donde ha trabajado en el negocio de la confitería y pastelería. El Globo era un salón de té que la aristocracia mexicana adoptó con la imagen de un globo aerostático, que representaba a los elegantes viajes de aquella época.
+								<br> 
+								Durante la Revolución Mexicana, El Globo cierra sus puertas y vende, de forma temporal, el negocio a una familia francesa, la cual decide cerrar el negocio definitivamente y el abuelo Laposse regresa a Italia en 1919.
+								<br> 
+								Para 1923, el jerarca de la familia italiana regresa a México y pide autorización a los propietarios de El Globo para reabrir el negocio en la calle de Abraham González, en el Centro Histórico, cerca de las instalaciones del actual Museo Franz Mayer.
+								<br> 
+								El Nuevo Globo es el nombre que bautiza el local y dos años después se convierte solo en El Globo, una pastelería y confitería en donde nacerían los dulces y chocolates Laposse.
+								<br> 
+								La segunda generación de la familia Laposse, que incluye al padre de Alberto y sus tíos, se dividió en dos negocios: dulces y chocolates, así como la panadería. Su padre y su tío Enrique asumen el negocio de la harina y la levadura.
+								<br> 
+								En la actualidad, la empresa de confitería se encuentra en manos de Mario Laposse, primo de Alberto.
+								<br> 
+								<img style="margin-left: 50px; margin-top: 19px;" src="{% static 'core/images/historia_teens.jpg' %}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+{% endblock content %}
+
+{% block extrafoot %}
+<script src="{% static 'core/js/product_custom.js' %}"></script>
+{% endblock extrafoot %}

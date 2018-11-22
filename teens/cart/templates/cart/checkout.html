@@ -1,0 +1,127 @@
+{% extends "core/base.html" %}
+
+{% block title %}Checkout{% endblock title %}
+
+{% load static %}
+
+{% block extra %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/styles/checkout.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'core/styles/checkout_responsive.css' %}">
+{% endblock extra %}
+
+<div class="super_container">
+	
+{% block content %}
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="{% static 'core/images/packing-supplies.jpg' %}" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_container">
+						<div class="home_content">
+							<div class="home_title">Envio</div>
+							<div class="breadcrumbs">
+								<ul>
+									<li><a href="{% url 'home' %}">inicio</a></li>
+									<li><a href="{% url 'cart' %}">carro de compras</a></li>
+									<li>envio</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Checkout -->
+
+	<div class="checkout">
+		<div class="container">
+			<div class="row">
+
+				<!-- Billing Details -->
+				<div class="col-lg-6">
+					<div class="billing">
+						<div class="checkout_title">detalles de envio</div>
+						<div class="checkout_form_container">
+							<form action="#" id="checkout_form">
+							{% csrf_token %}
+								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-between">
+									{{form.firtsname}}
+									{{form.lastname}}
+								</div>
+								{{form.email}}
+								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-between">
+								{{form.zipcode}}
+								{{form.phonenum}}
+								</div>
+								{{form.town}}
+								{{form.address}}
+								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-between">
+									{{form.streetnumber}}
+									{{form.unitnumber}}
+								</div>
+								{{form.comment}}
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!-- Cart Details -->
+				<div class="col-lg-6">
+					<div class="cart_details">
+						<div class="checkout_title">total del carro</div>
+						<div class="cart_total">
+							<ul>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_total_title">Producto</div>
+									<div class="cart_total_price ml-auto">Total</div>
+								</li>
+								{% for item in items %}
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_total_title">{{item.product.name}} x{{item.quantity}}</div>
+									<div class="cart_total_price ml-auto">${{item.total}}0</div>
+								</li>	
+								{% endfor %}
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_total_title">Subtotal</div>
+									<div class="cart_total_price ml-auto">${{sub}}0</div>
+								</li>
+								<li class="d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_total_title">Envio</div>
+									<div class="cart_total_price ml-auto">$5.00</div>
+								</li>
+								<li class="d-flex flex-row align-items-start justify-content-start total_row">
+									<div class="cart_total_title">Total</div>
+									<div class="cart_total_price ml-auto">${{total}}0</div>
+								</li>
+							</ul>
+						</div>
+						<div class="payment_options">
+							<div>
+								<input type="radio" id="radio_payment_1" name="regular_radio" class="regular_radio">
+								<label for="radio_payment_1">cash on delivery</label>
+							</div>
+							<div>
+								<input type="radio" id="radio_payment_2" name="regular_radio" class="regular_radio" checked>
+								<label for="radio_payment_2">paypal</label>
+								<div class="visa payment_option"><a href="#"><img src="{% static 'core/images/visa.jpg' %}" alt=""></a></div>
+								<div class="master payment_option"><a href="#"><img src="{% static 'core/images/master.jpg' %}" alt=""></a></div>
+							</div>
+							<a href="{% url 'listDelete' %}"><button class="cart_total_button">enviar pedido</button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}
+
+
+{% block extrafoot %}
+<script src="{% static 'core/js/checkout_custom.js' %}"></script>
+{% endblock extrafoot %}

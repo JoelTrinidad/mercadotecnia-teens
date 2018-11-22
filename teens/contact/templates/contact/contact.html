@@ -1,0 +1,160 @@
+{% extends "core/base.html" %}
+
+{% block title %}Contact{% endblock title %}
+
+{% load static %}
+
+{% block extra %}
+	<link rel="stylesheet" type="text/css" href="{% static 'core/styles/contact.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'core/styles/contact_responsive.css' %}">
+{% endblock extra %}
+
+{% block content %}
+
+
+<!-- Home -->
+
+<div class="home">
+	<div class="home_background parallax-window" data-parallax="scroll" data-image-src="{% static 'core/images/contacto.png' %}" data-speed="0.8"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="home_container">
+					<div class="home_content">
+						<div class="home_title">Contacto</div>
+						<div class="breadcrumbs">
+							<ul>
+								<li><a href="{% url 'home' %}">Inicio</a></li>
+								<li>Contacto</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<!-- Google Map -->
+		
+				<div id="map"></div>
+			
+
+<!-- Contact Form -->
+
+<div class="contact">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="review_form_container">
+					<div class="review_form_title">Contactanos</div>
+					<div class="review_form_content">
+						{% if 'ok' in request.GET %}
+							<p><b>Su mensaje se ha enviado, en breve nos pondremos en contacto con usted.</b></p>
+						{% endif %}
+						{% if 'fail' in request.GET %}
+							<p><b>Algo salio mal al enviar su mensaje, intentelo más tarde.</b></p>
+						{% endif %}
+						<form action="" id="review_form" class="review_form" method="POST">
+							{% csrf_token %}
+							<div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
+
+								{{form.name}}
+								{{form.email}}
+								{{form.subject}}
+								{{form.name.errors}}
+								{{form.email.errors}}
+								{{form.subject.errors}}
+							</div>
+							{{form.content}}
+							{{form.content.errors}}
+
+							<input type="submit" class="review_form_button" value="Enviar">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Contact Text -->
+
+<div class="contact_text">
+	<div class="container">
+		<div class="row">
+
+			<!-- Contact Info -->
+			<div class="col-lg-5">
+
+				<div class="contact_info">
+					<div class="contact_title">información de contacto</div>
+					<div class="contact_info_content">
+						<ul>
+							<li>
+								<div class="contact_info_icon"><img src="{% static 'core/images/contact_info_1.png' %}" alt=""></div>
+								<div class="contact_info_text">Av.México-coyoacán 375,Benito Juárez,Ciudad de México</div>
+							</li>
+							<li>
+								<div class="contact_info_icon"><img src="{% static 'core/images/contact_info_3.png' %}" alt=""></div>
+								<div class="contact_info_text">1517-20-20 ó 1518-2020</div>
+							</li>
+						</ul>
+					</div>
+					<div class="contact_info_social">
+						<ul>
+							{% if LINK_PINTEREST %}
+							<li><a href="{{LINK_PINTEREST}}"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+							{% endif %}
+							{% if LINK_LINKEDIN %}
+							<li><a href="{{LINK_LINKEDIN}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+							{% endif %}
+							{% if LINK_INSTAGRAM %}
+							<li><a href="{{LINK_INSTAGRAM}}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							{% endif %}
+							{% if LINK_REDDIT_ALIEN %}
+							<li><a href="{{LINK_REDDIT_ALIEN}}"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
+							{% endif %}
+							{% if LINK_TWITTER %}
+							<li><a href="{{LINK_TWITTER}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- FAQ -->
+			<div class="col-lg-7">
+					<div class="faq">
+						<div class="contact_title">faq</div>
+						<div class="faq_content">
+
+							<!-- Accordions -->
+							<div class="accordions">
+
+								{% for question in questions %}
+								<div class="accordion_container">
+									<div class="accordion d-flex flex-row align-items-center {% if forloop.last  %}active{% endif %}"><div>{{question.title}}</div></div>
+									<div class="accordion_panel">
+										<p>{{question.content}}</p>
+									</div>
+								</div>
+								{% endfor %}
+								
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+	
+
+{% block extrafoot %}
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="{% static 'core/js/contact_custom.js' %}"></script>
+{% endblock extrafoot %}

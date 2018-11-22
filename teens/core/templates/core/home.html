@@ -1,0 +1,103 @@
+{% extends "core/base.html" %}
+
+{% block title %}Teens{% endblock title %}
+
+{% load static %}
+
+{% block extra %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'core/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'core/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link href="{% static 'core/plugins/colorbox/colorbox.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'core/styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'core/styles/responsive.css' %}">
+{% endblock extra %}
+
+{% block content %}
+	<!-- Home -->
+
+	<div class="home">
+		
+		<!-- Home Slider -->
+
+		<div class="home_slider_container">
+			<div class="owl-carousel owl-theme home_slider">
+				
+				<!-- Home Slider Item -->
+				<div class="owl-item">
+					<div class="home_slider_background" style="background-image:url({% static 'core/images/coleccion_teens.jpeg' %})"></div>
+					<div class="home_slider_content">
+						<div class="home_slider_content_inner">
+							<div class="home_slider_subtitle">Teens</div>
+							<div class="home_slider_title">Nueva Imagen</div>
+						</div>	
+					</div>
+				</div>
+
+				<!-- Home Slider Item -->
+				<div class="owl-item">
+					<div class="home_slider_background" style="background-image:url({% static 'core/images/nueva_imagen.jpeg' %})"></div>
+					<div class="home_slider_content">
+						<div class="home_slider_content_inner">
+							<div class="home_slider_subtitle">Teens</div>
+							<div class="home_slider_title">Nuevo Empaque</div>
+						</div>	
+					</div>
+				</div>
+
+				<!-- Home Slider Item -->
+				<div class="owl-item">
+					<div class="home_slider_background" style="background-image:url({% static 'core/images/chocolates.jpeg' %})"></div>
+					<div class="home_slider_content">
+						<div class="home_slider_content_inner">
+							<div class="home_slider_subtitle">Teens</div>
+							<div class="home_slider_title">Promoción 2x1</div>
+						</div>	
+					</div>
+				</div>
+
+			</div>
+			
+			<!-- Home Slider Nav -->
+
+			<div class="home_slider_next d-flex flex-column align-items-center justify-content-center"><img src="{% static 'core/images/arrow_r.png' %}" alt=""></div>
+
+			<!-- Home Slider Dots -->
+
+			<div class="home_slider_dots_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="home_slider_dots">
+								<ul id="home_slider_custom_dots" class="home_slider_custom_dots">
+									<li class="home_slider_custom_dot active">01.<div></div></li>
+									<li class="home_slider_custom_dot">02.<div></div></li>
+									<li class="home_slider_custom_dot">03.<div></div></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>		
+			</div>
+		</div>
+	</div>
+
+	<!-- video -->
+	<div style=" margin-top: 80px;" class="newsletter">
+			<div class="newsletter_content">
+				<div class="newsletter_image" style="background-image:url({% static 'core/images/candy.jpg' %});"></div>
+				<div class="container">		
+					<video style="margin-left: 50px; margin-top: 0px; padding: 5px;" id="medio" width="1080" height="590"  preload controls loop poster="{% static 'core/images/estilo_retro.jpeg' %}">
+						<source src="{% static 'core/videos/Comercial TEENS final.mp4' %}">
+					</video>
+				</div>
+			</div>
+		</div>
+		
+{% endblock content %}
+
+{% block extrafoot %}
+<script src="{% static 'core/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'core/plugins/colorbox/jquery.colorbox-min.js' %}"></script>
+<script src="{% static 'core/js/custom.js' %}"></script>
+{% endblock extrafoot %}
